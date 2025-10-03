@@ -32,7 +32,7 @@ function Banner() {
       draggable={false}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={4000}
+      autoPlaySpeed={3000}
       keyBoardControl={true}
       slidesToSlide={1}
       responsive={responsive}
