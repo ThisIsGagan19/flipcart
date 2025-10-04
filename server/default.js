@@ -1,5 +1,5 @@
 import { products } from "./constants/data.js"
-import Products from "./model/productSchema.js"
+import Products from "./model/product.model.js"
 
 const DefaultData = async () => {
     try {

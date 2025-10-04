@@ -1,21 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box, Button, styled, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
+import { DataContext } from "../../context/DataProvider.jsx";
+import Profile from "../header/Profile.jsx";
 
 // components
 import LoginDialog from "../login/LoginDialog.jsx";
 
-
 const Wrapper = styled(Box)`
   display: flex;
-    margin: 0 3% 0 auto;
-    & > button, & > p, & > div {
-      margin-right: 40px;
-        font-size: 16px;
-        align-items: center;
-    }
+  margin: 0 3% 0 auto;
+  & > button,
+  & > p,
+  & > div {
+    margin-right: 40px;
+    font-size: 16px;
+    align-items: center;
+  }
 `;
 
 const Container = styled(Box)`
@@ -35,19 +38,29 @@ const LoginButton = styled(Button)`
 
 function CustomButtons() {
   const [open, setOpen] = useState(false);
+  const { account, setAccount } = useContext(DataContext);
   const openDialog = () => {
     setOpen(true);
   };
   return (
     <Wrapper>
-      <LoginButton variant="contained" onClick={() => openDialog()}>Login</LoginButton>
-      <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
+      {account ? (
+        <Profile account={account} setAccount={setAccount} />
+      ) : (
+        <LoginButton variant="contained" onClick={() => openDialog()}>
+          Login
+        </LoginButton>
+      )}
+
+      <Typography style={{ marginTop: 3, width: 135 }}>
+        Become a Seller
+      </Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
       <Container>
         <ShoppingCartIcon />
         <Typography>Cart</Typography>
       </Container>
-      <LoginDialog open={open} setOpen={setOpen}/>
+      <LoginDialog open={open} setOpen={setOpen} />
     </Wrapper>
   );
 }
