@@ -22,11 +22,13 @@ import {
   getProductsReducer,
   getProductDetailsReducer,
 } from "./reducers/productReducers.js";
+import {cartReducer} from "./reducers/cartReducer.js";
 
 const store = configureStore({
   reducer: {
     getProducts: getProductsReducer,
     getProductDetails: getProductDetailsReducer,
+    cart: cartReducer
   },
 });
 

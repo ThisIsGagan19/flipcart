@@ -6,6 +6,7 @@ import DetailView from "./components/details/DetailView.jsx";
 // components
 import Header from "./components/header/Header.jsx";
 import Home from "./components/home/Home.jsx";
+import Cart from "./components/cart/Cart.jsx";
 import DataProvider from "./context/DataProvider.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<DetailView />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </Box>
       </BrowserRouter>
