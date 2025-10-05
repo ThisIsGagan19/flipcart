@@ -3,11 +3,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import BoltIcon from "@mui/icons-material/Bolt";
 import React from "react";
 
-const LeftContainer = styled(Box)`
-  min-width: 40%;
-  padding: 40px 0 0 80px;
-  //   border-right: 1px solid #eee;
-`;
+const LeftContainer = styled(Box)(({ theme }) => ({
+    minWidth: '40%',
+    padding: '40px 0 0 80px',
+    [theme.breakpoints.down('md')]: {
+        padding: '20px 40px'
+    }
+}))
 
 const Image = styled("img")`
   padding : 15px;
@@ -16,9 +18,10 @@ const Image = styled("img")`
 `;
 
 const StyledButton = styled(Button)`
-  width: 48%;
-  height: 50px;
-  border-radius: 2px;
+    width: 46%;
+    border-radius: 2px;
+    height: 50px;
+    color: #FFF;
 `;
 
 function ActionItem({ product }) {
