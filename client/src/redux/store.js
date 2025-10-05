@@ -17,14 +17,16 @@
 
 // export default store;
 
-
-
 import { configureStore } from "@reduxjs/toolkit";
-import { getProductsReducer } from "./reducers/productReducers.js";
+import {
+  getProductsReducer,
+  getProductDetailsReducer,
+} from "./reducers/productReducers.js";
 
 const store = configureStore({
   reducer: {
     getProducts: getProductsReducer,
+    getProductDetails: getProductDetailsReducer,
   },
 });
 

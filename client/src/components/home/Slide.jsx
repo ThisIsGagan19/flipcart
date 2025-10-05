@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Countdown from "react-countdown";
+import { Link } from "react-router-dom";
 
 import { Box, Typography, Button, Divider, styled } from "@mui/material";
 
@@ -103,16 +104,18 @@ function Slide({ products, title, timer }) {
         containerClass="carousel-container"
       >
         {products.map((product) => (
-          <Box key={product.id} style={{ padding: 10, textAlign: "center" }}>
-            <Image src={product.url} alt={product.title.shortTitle} />
-            <Text style={{ fontWeight: 600, color: "#212121" }}>
-              {product.title.shortTitle}
-            </Text>
-            <Text style={{ color: "green" }}>{product.discount}</Text>
-            <Text style={{ color: "#212121", opacity: 0.6 }}>
-              {product.tagline}
-            </Text>
-          </Box>
+          <Link to={`product/${product.id}`} style={{ textDecoration: "none" }}>
+            <Box key={product.id} style={{ padding: 10, textAlign: "center" }}>
+              <Image src={product.url} alt={product.title.shortTitle} />
+              <Text style={{ fontWeight: 600, color: "#212121" }}>
+                {product.title.shortTitle}
+              </Text>
+              <Text style={{ color: "green" }}>{product.discount}</Text>
+              <Text style={{ color: "#212121", opacity: 0.6 }}>
+                {product.tagline}
+              </Text>
+            </Box>
+          </Link>
         ))}
       </Carousel>
     </Component>
