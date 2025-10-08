@@ -5,6 +5,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import BoltIcon from "@mui/icons-material/Bolt";
 import { addToCart } from '../../redux/actions/cartAction.js';
 import { useState } from 'react';
+import { payUsingPaytm } from "../../service/api.js";
+import { post } from "../../utils/paytm.js";
 
 const LeftContainer = styled(Box)(({ theme }) => ({
     minWidth: '40%',
@@ -37,6 +39,15 @@ function ActionItem({ product }) {
         dispatch(addToCart(id, quantity));
         navigate('/cart');
     }
+
+  const buyNow = async () => {
+        let response = await payUsingPaytm({ amount: 500, email: 'thisisgagan19@gmail.com'});
+        let information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response    
+        }
+        post(information);
+    }
   return (
     <LeftContainer>
       <Box style={{padding: '15px 20px', border: '1px solid #f0f0f0', width: '90%'}}>
@@ -50,7 +61,7 @@ function ActionItem({ product }) {
         <ShoppingCartIcon />
         Add to Cart
       </StyledButton>
-      <StyledButton variant="contained" style={{ background: "#fb541b" }}>
+      <StyledButton variant="contained" onClick={() => buyNow()} style={{ background: "#fb541b" }}>
         <BoltIcon />
         Buy Now
       </StyledButton>
