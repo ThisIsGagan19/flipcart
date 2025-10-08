@@ -128,7 +128,7 @@ export const paytmResponse = (req, res) => {
         post_res.on("end", () => {
           const result = JSON.parse(response);
           console.log("✅ Paytm Status Response:", result);
-          res.redirect("http://localhost:5173/");
+          res.redirect("https://flipcart-frontend.onrender.com/");
         });
       });
 
