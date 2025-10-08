@@ -1,7 +1,7 @@
 import * as actionTypes from "../constants/cartConstants.js";
 import axios from "axios";
 
-const URL = "http://localhost:8000";
+const URL = "https://flipcart-919s.onrender.com";
 
 export const addToCart = (id, quantity) => async (dispatch) => {
   try {
